@@ -65,6 +65,7 @@ if (_) {
 }
 
 const pwd = import.meta.env.PASSWORD
+const defaultMsg = import.meta.env.DEFAULT_MESSAGE
 
 export const post: APIRoute = async context => {
   try {
@@ -84,7 +85,7 @@ export const post: APIRoute = async context => {
     } = body
 
     if (pwd && pwd !== password) {
-      throw new Error("密码错误，请联系网站管理员。")
+      throw new Error("密码错误，请联系网站管理员。\n"+defaultMsg)
     }
 
     if (!messages?.length) {
